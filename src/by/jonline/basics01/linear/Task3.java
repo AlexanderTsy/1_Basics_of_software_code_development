@@ -27,5 +27,7 @@ public class Task3 {
 		
 		System.out.println("значение выражения: "+result);
 		
+		scanner.close();
+		
 	}
 }
