@@ -4,26 +4,26 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task2 {
-	/* Циклы. Задание 2
-	 * Вычислить значения функции на отрезке [a,b] с шагом h:
-	 * y=x, x>2
-	 * y=-x, x<=2
+	/*
+	 * Циклы. Задание 2 Вычислить значения функции на отрезке [a,b] с шагом h: y=x,
+	 * x>2 y=-x, x<=2
 	 */
 
-	/* Step size h is supposed to be positive.
-	 * If step h is greater than [a,b] range length,
-	 * only values of function at a and b are returned
+	/*
+	 * Step size h is supposed to be positive. If step h is greater than [a,b] range
+	 * length, only values of function at a and b are returned
 	 */
-	
+
 	public static void main(String[] args) {
 		// Declare variables
-		double a=0; //range start
-		double b=0; //range finish
-		double h=0; // calculations step
-		
+		double a = 0; // range start
+		double b = 0; // range finish
+		double h = 0; // calculations step
+
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		boolean isDataRead = false;
-		
+
 		// trying to read the data until it's read
 		do {
 			try {
@@ -34,7 +34,7 @@ public class Task2 {
 				b = sc.nextDouble();
 				h = sc.nextDouble();
 				isDataRead = true; // all the data have been read
-				if (h<=0) {
+				if (h <= 0) {
 					System.err.println("Step size h has to be greater than zero. Please try again");
 					isDataRead = false;
 				}
@@ -43,23 +43,22 @@ public class Task2 {
 			}
 		} while (!isDataRead);
 		// checking if [a,b] range is ascending
-		boolean isAscending = a<b;
-		double x=a; // initializing x variable at range start
+		boolean isAscending = a < b;
+		double x = a; // initializing x variable at range start
 		do {
-			System.out.println("y("+x+")="+y(x));
-			//if range is ascending x is increased, otherwise it's decreased by h
-			x=(isAscending)?x+h:x-h;
-		} while (isAscending && x<b || !isAscending && x>b); 
+			System.out.println("y(" + x + ")=" + y(x));
+			// if range is ascending x is increased, otherwise it's decreased by h
+			x = (isAscending) ? x + h : x - h;
+		} while (isAscending && x < b || !isAscending && x > b);
 		// continue till b the end of range
 		// printing value at b
-		System.out.println("y("+b+")="+y(b));
-		
-		sc.close();
+		System.out.println("y(" + b + ")=" + y(b));
+
 	}
-	
+
 	// calculates values of function
 	private static double y(double x) {
-		return (x<2)?x:-x;
+		return (x < 2) ? x : -x;
 	}
-	
+
 }
