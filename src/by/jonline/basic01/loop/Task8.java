@@ -1,4 +1,4 @@
-package by.jonline.basics01.loops;
+package by.jonline.basic01.loop;
 
 import java.math.BigDecimal;
 

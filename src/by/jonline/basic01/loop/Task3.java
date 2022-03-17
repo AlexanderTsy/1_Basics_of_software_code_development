@@ -1,4 +1,4 @@
-package by.jonline.basics01.loops;
+package by.jonline.basic01.loop;
 
 public class Task3 {
 	/* Циклы Задание 3
