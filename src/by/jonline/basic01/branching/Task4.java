@@ -1,4 +1,4 @@
-package by.jonline.basics01.branching;
+package by.jonline.basic01.branching;
 
 import java.util.Arrays;
 

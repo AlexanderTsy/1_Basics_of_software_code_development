@@ -1,4 +1,4 @@
-package by.jonline.basics01.branching;
+package by.jonline.basic01.branching;
 
 public class Task3 {
 	// Ветвления. Задание 3

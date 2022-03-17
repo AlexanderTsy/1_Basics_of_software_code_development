@@ -1,4 +1,4 @@
-package by.jonline.basics01.linear;
+package by.jonline.basic01.linear;
 
 import java.util.Scanner;
 

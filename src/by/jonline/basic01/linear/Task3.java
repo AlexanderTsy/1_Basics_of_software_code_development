@@ -1,4 +1,4 @@
-package by.jonline.basics01.linear;
+package by.jonline.basic01.linear;
 
 import static java.lang.Math.sin;
 import static java.lang.Math.cos;
