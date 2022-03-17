@@ -39,9 +39,12 @@ public class Task6 {
 		byte x;
 		byte y;
 		String input;
+		
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		// prompting to enter comma separated coordinates
 		System.out.println("Checking if region is filled.\r\nEnter x,y coordinates");
+		
 		input = scanner.next();
 		try {
 			x = Byte.parseByte(input.split("\\,")[0]);
@@ -54,7 +57,6 @@ public class Task6 {
 		catch (IllegalArgumentException e) {
 			System.err.println(e.getMessage());
 		}
-		scanner.close();
 	}
 	
 	private static boolean checkRegion(byte x, byte y) throws IllegalArgumentException {
