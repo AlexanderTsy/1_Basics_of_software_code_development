@@ -12,26 +12,69 @@ public class Task3 {
 	// Если точки совпадают, будем считать что они находятся на одной прямой. 
 
 	public static void main(String[] args) {
-		//зададим точность для сравнения
-		double threshold = 0.000000001;
-		double x1 = 1.5e+100;
-		double y1 = 1.5e+100;
-		double x2 = 2.1e-100;
-		double y2 = 2.1e-100;
-		double x3 = 1.0000000000000001d;
-		double y3 = 1.0000000000000001d;
+		//Переменные
+		double threshold = 0.000000001; //точность
+		//координаты
+		double x1;
+		double y1;
+		double x2;
+		double y2;
+		double x3;
+		double y3;
+		//результат
+		boolean result;
 		
-		String result;
-		// проверим выполнение равенства с учетом заданного порогового значения
-		if ((y3-y1)*(x2-x1)-(x3-x1)*(y2-y1)<threshold) {
-			result ="";
-		} else {
-			result =" не";
-		}
-		// используем строковый формат %s вместо %f, чтобы не было преобразования по локальных настройкам десятичного разделителя.
-		System.out.println(String.format("Точки A(%s,%s) B(%s,%s) C(%s,%s)%s расположены на одной прямой.",
-				x1,y1, x2,y2, x3,y3, result));
-		
+		// Тестовые данные 1
+		threshold = 0.000000001;
+		x1 = 1.5e+100;
+		y1 = 1.5e+100;
+		x2 = 2.1e-100;
+		y2 = 2.1e-100;
+		x3 = 1.0000000000000001d;
+		y3 = 1.0000000000000001d;
+
+		result = checkThreePointsOnTheSameLine(x1, y1, x2, y2, x3, y3, threshold);
+
+		// используем строковый формат %s вместо %f, чтобы не было преобразования по
+		// локальных настройкам десятичного разделителя.
+		// если точки не на одной прямой - вставим частицу "не"
+		System.out.println(String.format("Точки A(%s,%s) B(%s,%s) C(%s,%s)%s расположены на одной прямой.", x1, y1, x2,
+				y2, x3, y3, result ? "" : " не"));
+
+		// Тестовые данные 2
+		threshold = 1e-100;
+		x1 = 1.5e+100;
+		y1 = 1.5e+100;
+		x2 = 2.1e-100;
+		y2 = 2.1e-100;
+		x3 = 1;
+		y3 = 5;
+
+		result = checkThreePointsOnTheSameLine(x1, y1, x2, y2, x3, y3, threshold);
+		System.out.println(String.format("Точки A(%s,%s) B(%s,%s) C(%s,%s)%s расположены на одной прямой.", x1, y1, x2,
+				y2, x3, y3, result ? "" : " не"));
+
+		// Тестовые данные 3
+		threshold = 0.0000000001d;
+		x1 = 1.5e+100;
+		y1 = 1.5e+100;
+		x2 = 2.1e-100;
+		y2 = 2.1e-100;
+		x3 = 2.0000000000000002d;
+		y3 = 1.0000000000000001d;
+
+		result = checkThreePointsOnTheSameLine(x1, y1, x2, y2, x3, y3, threshold);
+		System.out.println(String.format("Точки A(%s,%s) B(%s,%s) C(%s,%s)%s расположены на одной прямой.", x1, y1, x2,
+				y2, x3, y3, (result ? "" : " не")));
+
+	}
+	
+	/*
+	 * Метод проверяет расположены ли три точки на одной прямой
+	 * threshold влияет на точность метода
+	 */
+	public static boolean checkThreePointsOnTheSameLine(double x1, double y1, double x2, double y2, double x3, double y3, double threshold) {
+		return (y3-y1)*(x2-x1)-(x3-x1)*(y2-y1) < threshold;
 	}
 
 }
