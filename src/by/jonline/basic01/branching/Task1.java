@@ -18,10 +18,14 @@ public class Task1 {
 
 	public static boolean checkRightTriangle(float angle1, float angle2) {
 		/*
-		 * треугольник будет прямоугольным, если один из углов равен 90 или сумма двух
+		 * треугольник, если существует, будет прямоугольным, если один из углов равен 90 или сумма двух
 		 * углов равна 90
 		 */
-		return (angle1 == 90 || angle2 == 90 || (angle1 + angle2) == 90);
+		if (checkTriangleExist(angle1, angle2)) {
+			return (angle1 == 90 || angle2 == 90 || (angle1 + angle2) == 90);
+		} else {
+			return false;
+		}
 	}
 
 	// Предположим что пользователь вводит величину угла в градусах с клавиатуры,
