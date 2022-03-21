@@ -33,33 +33,8 @@ public class Task6 {
 	// Square with coordinates (0,0) is stored in region[6][6]
 	private static byte xOffset = 6;
 	private static byte yOffset = 6;
-
-	public static void main(String[] args) {
-		// User data is supposed to be entered via the keyboard. Incorrect input is rejected, then user is prompted to try again.
-		byte x;
-		byte y;
-		String input;
-		
-		@SuppressWarnings("resource")
-		Scanner scanner = new Scanner(System.in);
-		// prompting to enter comma separated coordinates
-		System.out.println("Checking if region is filled.\r\nEnter x,y coordinates");
-		
-		input = scanner.next();
-		try {
-			x = Byte.parseByte(input.split("\\,")[0]);
-			y = Byte.parseByte(input.split("\\,")[1]);
-			// write result to System.out
-			System.out.println(checkRegion(x, y));
-		} catch (NumberFormatException numExc) {
-			System.err.println("Entered coordinates are not integer numbers! You have entered: "+input);
-		}
-		catch (IllegalArgumentException e) {
-			System.err.println(e.getMessage());
-		}
-	}
 	
-	private static boolean checkRegion(byte x, byte y) throws IllegalArgumentException {
+	public static boolean checkRegion(byte x, byte y) throws IllegalArgumentException {
 		/** This method converts (x,y) coordinates to [row][column]
 		* @param  x  coordinate
 		* @param  y  coordinate
@@ -70,8 +45,39 @@ public class Task6 {
 		if ( (-y+yOffset)<0 || (-y+yOffset)>region.length) throw new IllegalArgumentException("Y is out of bounds"); 
 		int row = -y + yOffset;
 		int column = x + xOffset; 
-		return region[row][column]!=0;
+		return region[row][column]!=0;	
+	}
+
+	public static void main(String[] args) {
+		// User data is supposed to be entered via the keyboard. Incorrect input is rejected, then user is prompted to try again.
+		byte x;
+		byte y;
+
+		// prompting to enter comma separated coordinates
+		System.out.println("Checking if region is filled.\r\nEnter x,y coordinates");
 		
+		try {
+			x = getByteFromConsole("x >>");
+			y = getByteFromConsole("y >>");
+			// write result to System.out
+			System.out.println(checkRegion(x, y));
+		} catch (IllegalArgumentException e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	/*
+	 * Convenience method to get byte data from console
+	 */
+	private static byte getByteFromConsole(String message) {
+		@SuppressWarnings("resource")
+		Scanner scanner = new Scanner(System.in);
+		System.out.println(message);
+		while (!scanner.hasNextByte()) {
+			scanner.next();
+			System.out.println(message);
+		}
+		return scanner.nextByte();
 	}
 
 }
