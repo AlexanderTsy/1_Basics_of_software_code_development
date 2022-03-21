@@ -1,7 +1,5 @@
 package by.jonline.basic01.branching;
 
-import java.util.Arrays;
-
 public class Task4 {
 	/* Ветвления. Задание 4
 	 * Заданы размеры A, B прямоугольного отверстия и размеры x,y,z кирпича.
