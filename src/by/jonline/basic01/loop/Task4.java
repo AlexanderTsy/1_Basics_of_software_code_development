@@ -9,7 +9,7 @@ public class Task4 {
 	
 	// Рассчитаем произведение квадратов натуральных чисел от 1 до 200
 	public static void main(String[] args) {
-		//Поскольку искомое значение предположительно превысит диапазон типа long используем тип BigInteger
+		//Поскольку искомое значение предположительно превысит диапазон типа long и double используем тип BigInteger
 		BigInteger product;
 		product = BigInteger.ONE;
 		int i=1;
